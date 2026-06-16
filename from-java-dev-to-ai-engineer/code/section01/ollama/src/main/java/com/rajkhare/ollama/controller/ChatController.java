@@ -1,4 +1,4 @@
-package com.rajkhare.openai.controller;
+package com.rajkhare.ollama.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +16,10 @@ public class ChatController {
         this.chatClient = chatClientBuilder.build();
     }
 
-
     @GetMapping("/chat")
-    public String chat(@RequestParam("message") String message) {
-        return chatClient.prompt(message).call().content();
+    public String chat(@RequestParam String message) {
+        return chatClient.prompt(message)
+                .call()
+                .content();
     }
-
 }
